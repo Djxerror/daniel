@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0c0c0b;
+  --color-stage: #070706;
+  --color-surface: #161513;
+  --color-surface-2: #221f1b;
+  --color-fg: #f4f0e6;
+  --color-muted: #9c9488;
+  --color-ember: #ff5c2a;
+  --color-brass: #d4b483;
+  --color-line: #2e2a24;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Outfit", "Avenir Next", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-stage);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .app-stage {
+    display: flex;
+    height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-stage);
+  }
+  .app-device {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 480px;
+    height: 100dvh;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+  .app-scroll {
+    min-height: 0;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .app-nav {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+  .app-tabbar {
+    padding-bottom: max(0.4rem, env(safe-area-inset-bottom));
+    background: color-mix(in oklab, var(--color-bg) 88%, transparent);
+    backdrop-filter: blur(16px);
+  }
+  .app-sheet {
+    border-radius: 1.25rem 1.25rem 0 0;
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+  .group-card {
+    overflow: hidden;
+    border-radius: 1rem;
+    background: var(--color-surface);
+  }
+  .group-card > * + * {
+    border-top: 1px solid var(--color-line);
+  }
+  .sim-root {
+    background-color: #12162a;
+    background-image:
+      radial-gradient(circle at 18% 8%, rgb(255 255 255 / 0.05) 0 1px, transparent 1.5px),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90' fill='none' stroke='white' stroke-opacity='0.07' stroke-width='1.6'><path d='M24 68V22l32-6v40'/><circle cx='18' cy='68' r='8'/><circle cx='50' cy='60' r='8'/></svg>");
+    color: #fff;
+    font-family: var(--font-sans);
+  }
+  .sim-bio {
+    background: linear-gradient(180deg, #7ef6ea 0%, #3dce8a 55%, #2bb86a 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55);
+  }
+  .sim-shop {
+    background: linear-gradient(180deg, #b6f5a4 0%, #3dce55 55%, #2aa844 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
+  }
+  .sim-listen {
+    background: linear-gradient(180deg, #6ec4ff, #3b7dff);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  }
+  .sim-orders {
+    background: linear-gradient(180deg, #ff8fa3, #ffb03a);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4);
+  }
+  .sim-feats {
+    background: linear-gradient(180deg, #ffb15a, #ff5d86);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4);
+  }
+  .sim-sleep {
+    background: linear-gradient(180deg, #ffe56a, #f0a429);
+    color: #2a2108;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
+  }
+  .sim-hype {
+    background: linear-gradient(180deg, #d8ffe8, #3ddc8a 40%, #1aa36a);
+  }
+  .sim-rep {
+    background: linear-gradient(180deg, #e7f4ff, #5aa6ff 40%, #315bff);
+  }
+  .sim-card {
+    background: linear-gradient(180deg, #5eb6ff 0%, #2f78ff 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  }
+  .sim-food {
+    background: linear-gradient(180deg, #8ef6ea, #3dce8c);
+    color: #063028;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.55);
+  }
+  .sim-people {
+    background: linear-gradient(180deg, #c6f7a4, #46d25a);
+    color: #12320c;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
+  }
+  .sim-bars {
+    background: linear-gradient(180deg, #9fd0ff, #3a74ff);
+    color: white;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45);
+  }
+  .sim-bolt {
+    color: #5eb6ff;
+  }
+  .sim-cash {
+    color: #3dff8a;
+  }
+  .sim-pill {
+    display: flex;
+    width: 100%;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 2px solid rgb(255 255 255 / 0.88);
+    border-radius: 999px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: white;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.45);
+  }
+  .sim-pill-cyan {
+    background: linear-gradient(100deg, #49b7ff 0%, #3ddea6 48%, #2fce62 100%);
+  }
+  .sim-pill-blue {
+    background: linear-gradient(180deg, #6eb6ff, #3a78ff);
+  }
+  .sim-pill-night {
+    background: linear-gradient(180deg, #7aa2ff, #3a4dff);
+  }
+  .sim-pill-pink {
+    background: linear-gradient(100deg, #ff5d8a, #ffb03a);
+  }
+  .sim-pill-gold {
+    background: linear-gradient(100deg, #ffe56a, #ff9a1f);
+    color: #2a2108;
+  }
+  .sim-pill-red {
+    background: linear-gradient(180deg, #ff5a5a, #d01212);
+  }
+  .sim-pill-violet {
+    background: linear-gradient(180deg, #c4b5fd, #6d5efc);
+  }
+  .sim-bio-card {
+    border: 3px solid white;
+    background: linear-gradient(120deg, #8ef6ea 0%, #3dce8a 58%, #2bb86a 100%);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.35);
+  }
+  .sim-phone {
+    width: 100%;
+    min-height: 34rem;
+    margin: 0.35rem auto 0.5rem;
+    border: 8px solid #141821;
+    border-radius: 2.2rem;
+    background:
+      radial-gradient(120% 80% at 80% 20%, rgb(120 90 255 / 0.55), transparent 50%),
+      linear-gradient(180deg, #1a3f9e 0%, #4a2ea8 46%, #16306e 100%);
+    padding: 0.85rem 0.9rem 1.2rem;
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.4);
+  }
+  .sim-arch {
+    width: 2.1rem;
+    border: 7px solid #6d4dff;
+    border-bottom: 0;
+    border-radius: 1.1rem 1.1rem 0 0;
+    background: transparent;
+  }
+  .sim-ink {
+    background: #12151f;
+  }
+}
+
+@media (min-width: 840px) {
+  .app-stage {
+    padding: 1.5rem;
+  }
+  .app-device {
+    width: 390px;
+    height: min(844px, calc(100dvh - 3rem));
+    border: 1px solid #3a342c;
+    border-radius: 2.5rem;
+    box-shadow:
+      0 0 0 8px rgb(255 80 180 / 0.35),
+      0 0 40px 8px rgb(80 140 255 / 0.35),
+      0 24px 80px rgb(0 0 0 / 0.5);
+  }
+}
